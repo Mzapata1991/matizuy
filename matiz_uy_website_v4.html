@@ -1,0 +1,366 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&family=Google+Sans+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#42b5e5;
+  --blue-dark:#2a93c2;
+  --blue-dim:rgba(66,181,229,0.12);
+  --blue-border:rgba(66,181,229,0.2);
+  --gold:#ecbc04;
+  --gold-dark:#c9a003;
+  --gold-dim:rgba(236,188,4,0.1);
+  --gold-border:rgba(236,188,4,0.25);
+  --dark:#090f14;
+  --dark2:#0d1720;
+  --dark3:#111e2a;
+  --text:#eef4f8;
+  --text-muted:rgba(238,244,248,0.52);
+  --text-dim:rgba(238,244,248,0.25);
+  --border:rgba(66,181,229,0.14);
+}
+body{font-family:'Product Sans','Google Sans',sans-serif;background:var(--dark);color:var(--text);scroll-behavior:smooth;font-size:15px;line-height:1.7;font-weight:400}
+
+nav{background:rgba(9,15,20,0.96);backdrop-filter:blur(18px);display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-flag-circle{width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;flex-direction:column;border:2px solid rgba(236,188,4,0.4);flex-shrink:0;position:relative}
+.flag-stripe{width:100%;flex:1}
+.flag-sun{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:13px;height:13px;background:var(--gold);border-radius:50%;z-index:2}
+.flag-sun::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:19px;height:19px;background:transparent;border-radius:50%;box-shadow:0 0 0 1.5px rgba(236,188,4,0.5)}
+.logo-text{font-family:'Product Sans','Google Sans',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);letter-spacing:0.02em}
+.logo-text span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+
+.slider-section{position:relative;overflow:hidden}
+.slides-container{display:flex;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1)}
+.slide{min-width:100%;height:480px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.slide-content{position:relative;z-index:2;text-align:center;padding:2rem;max-width:580px}
+.slide-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:block}
+.slide h2{font-family:'Product Sans','Google Sans',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-0.5px;line-height:1.1;margin-bottom:0.9rem;color:#fff}
+.slide h2 em{font-style:normal;color:var(--gold)}
+.slide p{font-size:0.9rem;color:rgba(238,244,248,0.55);font-weight:400;line-height:1.8}
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(9,15,20,0.55);border:1px solid var(--gold-border);color:var(--gold);width:38px;height:38px;border-radius:50%;font-size:0.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-family:inherit}
+.slider-btn:hover{background:rgba(66,181,229,0.2);border-color:var(--blue)}
+.slider-prev{left:1.25rem}.slider-next{right:1.25rem}
+.slider-dots{position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--gold-border);cursor:pointer;transition:all 0.25s}
+.dot.active{background:var(--gold);width:22px;border-radius:3px}
+.add-slide-btn{position:absolute;bottom:1.25rem;right:1.5rem;background:transparent;border:1px dashed var(--gold-border);color:rgba(236,188,4,0.45);padding:0.3rem 0.85rem;border-radius:3px;font-size:0.7rem;font-weight:500;letter-spacing:0.08em;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.add-slide-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+.uy-stripe{height:4px;background:linear-gradient(90deg,var(--blue) 0%,var(--blue) 46%,#fff 46%,#fff 54%,var(--blue) 54%)}
+
+.hero{padding:7rem 2rem 6rem;text-align:center;position:relative;overflow:hidden}
+.hero-glow{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.gb{position:absolute;border-radius:50%;filter:blur(130px);opacity:0.09}
+.gb1{width:650px;height:650px;background:var(--blue);top:-200px;left:-200px}
+.gb2{width:500px;height:500px;background:var(--gold);bottom:-150px;right:-150px}
+.hero-content{position:relative;z-index:1;max-width:600px;margin:0 auto}
+.hero-eyebrow{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue);margin-bottom:1.75rem}
+.hero h1{font-family:'Product Sans','Google Sans',sans-serif;font-size:clamp(2.8rem,7vw,4.6rem);font-weight:700;letter-spacing:-1.5px;line-height:1.05;margin-bottom:1.25rem;color:#fff}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{font-size:0.95rem;color:var(--text-muted);line-height:1.85;margin-bottom:3rem;font-weight:400}
+.btn-primary{background:var(--blue);color:#fff;padding:0.8rem 2rem;border-radius:3px;font-weight:700;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all 0.2s;display:inline-block;font-family:inherit}
+.btn-primary:hover{background:var(--blue-dark)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--gold-border);padding:0.8rem 2rem;border-radius:3px;font-weight:700;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all 0.2s;display:inline-block;font-family:inherit}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.ctas{display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap}
+
+.socials{display:flex;gap:0.6rem;justify-content:center;margin-top:2.75rem;flex-wrap:wrap}
+.social-chip{display:flex;align-items:center;gap:0.55rem;background:transparent;border:1px solid var(--border);padding:0.48rem 1rem;border-radius:3px;text-decoration:none;color:var(--text-muted);font-size:0.76rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;font-family:inherit}
+.social-chip:hover{border-color:var(--blue-border);color:var(--blue)}
+.s-icon{width:19px;height:19px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+section.sec{padding:6rem 2rem}
+.inner{max-width:860px;margin:0 auto}
+.eyebrow{font-size:0.67rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem;display:block}
+.sec-title{font-family:'Product Sans','Google Sans',sans-serif;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;letter-spacing:-0.5px;margin-bottom:0.9rem;line-height:1.1;color:#fff}
+.sec-sub{color:var(--text-muted);font-size:0.88rem;line-height:1.85;max-width:480px}
+
+.vtabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin:2.25rem 0 2rem}
+.vtab{padding:0.6rem 1.4rem;font-size:0.74rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border:none;background:transparent;color:var(--text-muted);transition:all 0.2s;border-bottom:2px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:6px;font-family:inherit}
+.vtab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.vtab:hover:not(.active){color:var(--text)}
+.vpanel{display:none}.vpanel.active{display:block}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.vcard{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:all 0.22s}
+.vcard:hover{transform:translateY(-3px);border-color:var(--blue-border)}
+.vthumb{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.vinfo{padding:0.9rem 1rem}
+.vinfo h4{font-size:0.84rem;font-weight:500;line-height:1.5;margin-bottom:0.25rem;color:var(--text)}
+.vinfo span{font-size:0.71rem;color:var(--text-dim)}
+.vnote{background:var(--blue-dim);border:1px dashed var(--blue-border);border-radius:4px;padding:1.1rem 1.25rem;text-align:center;color:var(--text-muted);font-size:0.82rem;line-height:1.75}
+
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1px;margin-top:2.25rem;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.bcard{background:var(--dark2);padding:1.75rem;transition:background 0.2s;cursor:pointer}
+.bcard:hover{background:var(--dark3)}
+.btag{font-size:0.64rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem;display:block}
+.bcard h3{font-family:'Product Sans','Google Sans',sans-serif;font-size:0.97rem;font-weight:700;line-height:1.45;margin-bottom:0.55rem;color:#fff}
+.bcard p{font-size:0.81rem;color:var(--text-muted);line-height:1.7}
+.bdate{font-size:0.69rem;color:var(--text-dim);margin-top:1rem;letter-spacing:0.04em}
+
+.cbox{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:3rem;margin-top:2.25rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.cinfo h3{font-family:'Product Sans','Google Sans',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.8rem;color:#fff}
+.cinfo p{color:var(--text-muted);font-size:0.84rem;line-height:1.85}
+.clinks{display:flex;flex-direction:column;gap:0;margin-top:1.5rem}
+.clink{display:flex;align-items:center;gap:0.7rem;color:var(--text-muted);text-decoration:none;font-size:0.81rem;font-weight:500;letter-spacing:0.03em;transition:color 0.2s;padding:0.6rem 0;border-bottom:1px solid var(--border)}
+.clink:last-child{border-bottom:none}
+.clink:hover{color:var(--blue)}
+.ci{width:28px;height:28px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cform{display:flex;flex-direction:column;gap:0.8rem}
+.cform input,.cform textarea{width:100%;background:var(--dark);border:1px solid var(--border);border-radius:3px;padding:0.8rem 1rem;color:var(--text);font-size:0.84rem;font-family:inherit;outline:none;transition:border-color 0.2s;resize:none;font-weight:400}
+.cform input:focus,.cform textarea:focus{border-color:var(--blue)}
+.cform input::placeholder,.cform textarea::placeholder{color:var(--text-dim)}
+.cform-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}
+.fsub{background:var(--blue);color:#fff;border:none;border-radius:3px;padding:0.85rem;font-weight:700;font-size:0.76rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-family:inherit;width:100%}
+.fsub:hover{background:var(--blue-dark)}
+.form-status{font-size:0.8rem;text-align:center;padding:0.5rem;border-radius:3px;display:none}
+.form-status.ok{background:rgba(66,229,150,0.1);color:#42e596;border:1px solid rgba(66,229,150,0.2);display:block}
+.form-status.err{background:rgba(229,66,66,0.1);color:#e54242;border:1px solid rgba(229,66,66,0.2);display:block}
+
+footer{padding:1.75rem 2.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-logo{display:flex;align-items:center;gap:8px}
+.footer-logo .logo-text{font-size:1rem}
+footer>span{color:var(--text-dim);font-size:0.73rem;letter-spacing:0.06em}
+</style>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="logo-flag-circle">
+      <div class="flag-stripe" style="background:#42b5e5"></div>
+      <div class="flag-stripe" style="background:#fff"></div>
+      <div class="flag-stripe" style="background:#42b5e5"></div>
+      <div class="flag-sun"></div>
+    </div>
+    <span class="logo-text">MATIZ<span>UY</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="slider-section">
+  <div class="slides-container" id="slides">
+    <div class="slide">
+      <div style="position:absolute;inset:0;background:linear-gradient(155deg,#090f14 0%,#0d1e2e 55%,#0e2235 100%)"></div>
+      <div style="position:absolute;right:-60px;top:-60px;width:380px;height:380px;border-radius:50%;background:rgba(66,181,229,0.05);border:1px solid rgba(66,181,229,0.08)"></div>
+      <div style="position:absolute;right:20px;top:20px;width:220px;height:220px;border-radius:50%;background:rgba(236,188,4,0.03);border:1px solid rgba(236,188,4,0.07)"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Mundial 2026</span>
+        <h2>Vamo' arriba,<br><em>la Celeste</em></h2>
+        <p>Contenido mundialero todos los días. Seguime en mis redes para no perderte nada.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div style="position:absolute;inset:0;background:linear-gradient(155deg,#0d1720 0%,#090f14 100%)"></div>
+      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Product Sans',sans-serif;font-size:20rem;font-weight:700;color:rgba(66,181,229,0.03);pointer-events:none;white-space:nowrap;line-height:1">UY</div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Nuevo Contenido</span>
+        <h2>Tu próxima<br><em>campaña va acá</em></h2>
+        <p>Subí tu imagen y personalizá este slide con tu calendario de marketing.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div style="position:absolute;inset:0;background:linear-gradient(155deg,#111e2a 0%,#090f14 100%)"></div>
+      <div class="slide-content">
+        <span class="slide-eyebrow">Slide 3 — Personalizable</span>
+        <h2>Tu contenido,<br><em>tu marca</em></h2>
+        <p>Reemplazalo con tu próximo lanzamiento o colaboración.</p>
+      </div>
+    </div>
+  </div>
+  <button class="slider-btn slider-prev" id="prev">&#8592;</button>
+  <button class="slider-btn slider-next" id="next">&#8594;</button>
+  <div class="slider-dots" id="dots">
+    <div class="dot active" data-i="0"></div>
+    <div class="dot" data-i="1"></div>
+    <div class="dot" data-i="2"></div>
+  </div>
+  <button class="add-slide-btn" id="addSlide">+ Agregar slide</button>
+</div>
+
+<div class="uy-stripe"></div>
+
+<section class="hero">
+  <div class="hero-glow"><div class="gb gb1"></div><div class="gb gb2"></div></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Creador de Contenido · Uruguay</span>
+    <h1>Hola, soy<br><em>Matías Zapata</em></h1>
+    <p>Creo contenido que conecta, entretiene e inspira. Comparto lo mejor de Uruguay con autenticidad y una mirada propia.</p>
+    <div class="ctas">
+      <a href="#videos" class="btn-primary">Ver mis videos</a>
+      <a href="#contacto" class="btn-outline">Trabajemos juntos</a>
+    </div>
+    <div class="socials">
+      <a href="https://tiktok.com/@matizuy" class="social-chip" target="_blank">
+        <div class="s-icon" style="background:#000"><svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.1a4.85 4.85 0 01-1-.41z"/></svg></div>
+        TikTok
+      </a>
+      <a href="https://instagram.com/matiz.uy" class="social-chip" target="_blank">
+        <div class="s-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)"><svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+        Instagram
+      </a>
+      <a href="https://youtube.com/@matizuy" class="social-chip" target="_blank">
+        <div class="s-icon" style="background:#CC0000"><svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
+        YouTube
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="uy-stripe"></div>
+
+<section class="sec" id="videos">
+  <div class="inner">
+    <span class="eyebrow">Mis videos</span>
+    <h2 class="sec-title">Los más vistos</h2>
+    <p class="sec-sub">Todo el contenido en un solo lugar. Elegí tu plataforma favorita.</p>
+    <div class="vtabs">
+      <button class="vtab active" data-tab="tt"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.1a4.85 4.85 0 01-1-.41z"/></svg> TikTok</button>
+      <button class="vtab" data-tab="ig"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram</button>
+      <button class="vtab" data-tab="yt"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</button>
+    </div>
+    <div class="vpanel active" id="p-tt">
+      <div class="vnote">Pegá el embed de tus TikToks más vistos aquí. En TikTok: Compartir → Insertar → copiá el código.</div>
+      <div class="vgrid">
+        <div class="vcard"><div class="vthumb" style="background:#080808"><svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(255,255,255,0.07)"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.1a4.85 4.85 0 01-1-.41z"/></svg></div><div class="vinfo"><h4>Tu video más visto</h4><span>Pegá el embed de TikTok acá</span></div></div>
+        <div class="vcard"><div class="vthumb" style="background:#080808"><svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(255,255,255,0.07)"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.1a4.85 4.85 0 01-1-.41z"/></svg></div><div class="vinfo"><h4>Segundo más popular</h4><span>Pegá el embed de TikTok acá</span></div></div>
+        <div class="vcard"><div class="vthumb" style="background:#080808"><svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(255,255,255,0.07)"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.1a4.85 4.85 0 01-1-.41z"/></svg></div><div class="vinfo"><h4>Tercer más popular</h4><span>Pegá el embed de TikTok acá</span></div></div>
+      </div>
+    </div>
+    <div class="vpanel" id="p-ig">
+      <div class="vnote">Pegá el embed de tus Reels más vistos aquí. En Instagram: tres puntitos → Insertar → copiá el código.</div>
+      <div class="vgrid">
+        <div class="vcard"><div class="vthumb" style="background:#180810"><svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(220,39,67,0.18)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div><div class="vinfo"><h4>Tu Reel más visto</h4><span>Pegá el embed de Instagram acá</span></div></div>
+        <div class="vcard"><div class="vthumb" style="background:#180810"><svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(220,39,67,0.18)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div><div class="vinfo"><h4>Segundo Reel más visto</h4><span>Pegá el embed de Instagram acá</span></div></div>
+      </div>
+    </div>
+    <div class="vpanel" id="p-yt">
+      <div class="vnote">Pegá el embed de tus videos de YouTube aquí. En YouTube: Compartir → Insertar → copiá el iframe.</div>
+      <div class="vgrid">
+        <div class="vcard"><div class="vthumb" style="background:#0f0808"><svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(204,0,0,0.22)"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div><div class="vinfo"><h4>Tu video más visto</h4><span>Pegá el iframe de YouTube acá</span></div></div>
+        <div class="vcard"><div class="vthumb" style="background:#0f0808"><svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(204,0,0,0.22)"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div><div class="vinfo"><h4>Segundo más visto</h4><span>Pegá el iframe de YouTube acá</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="uy-stripe"></div>
+
+<section class="sec" id="blog" style="background:var(--dark2)">
+  <div class="inner">
+    <span class="eyebrow">Mis pensamientos</span>
+    <h2 class="sec-title">Blog</h2>
+    <p class="sec-sub">Reflexiones, tips y todo lo que aprendo en el camino de crear contenido desde Uruguay.</p>
+    <div class="bgrid">
+      <div class="bcard"><span class="btag">Mundial</span><h3>Crear contenido en época de Mundial: mi estrategia</h3><p>Cómo aprovechar el hype para crecer en seguidores de forma orgánica.</p><p class="bdate">Próximamente</p></div>
+      <div class="bcard"><span class="btag">TikTok</span><h3>5 cosas que aprendí en mi primer año en TikTok</h3><p>Las lecciones más honestas de mi experiencia creciendo en la plataforma.</p><p class="bdate">Próximamente</p></div>
+      <div class="bcard"><span class="btag">Reflexión</span><h3>Cómo encontré mi voz como creador</h3><p>El proceso de descubrir qué quiero decir y cómo decirlo con autenticidad.</p><p class="bdate">Próximamente</p></div>
+      <div class="bcard"><span class="btag">Herramientas</span><h3>Mi setup para grabar desde casa</h3><p>Cámara, iluminación, audio — todo lo que uso sin gastar una fortuna.</p><p class="bdate">Próximamente</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="inner">
+    <span class="eyebrow">Hablemos</span>
+    <h2 class="sec-title">Contacto</h2>
+    <p class="sec-sub">¿Tenés una idea, colaboración o simplemente querés saludar? Escribime.</p>
+    <div class="cbox">
+      <div class="cinfo">
+        <h3>¿En qué puedo ayudarte?</h3>
+        <p>Estoy abierto a colaboraciones, campañas de marca, apariciones y proyectos creativos.</p>
+        <div class="clinks">
+          <a href="https://tiktok.com/@matizuy" class="clink" target="_blank">
+            <div class="ci" style="background:#000"><svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.1a4.85 4.85 0 01-1-.41z"/></svg></div>
+            @matizuy en TikTok
+          </a>
+          <a href="https://instagram.com/matiz.uy" class="clink" target="_blank">
+            <div class="ci" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)"><svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+            @matiz.uy en Instagram
+          </a>
+          <a href="https://youtube.com/@matizuy" class="clink" target="_blank">
+            <div class="ci" style="background:#CC0000"><svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
+            @matizuy en YouTube
+          </a>
+        </div>
+      </div>
+      <div class="cform" id="contactForm">
+        <div class="cform-row">
+          <input type="text" id="fname" placeholder="Tu nombre" required />
+          <input type="email" id="femail" placeholder="Tu email" required />
+        </div>
+        <input type="text" id="fsubject" placeholder="Asunto" />
+        <textarea id="fmsg" rows="4" placeholder="¿En qué puedo ayudarte?"></textarea>
+        <button class="fsub" id="fsubBtn">Enviar mensaje</button>
+        <div class="form-status" id="fstatus"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <div class="logo-flag-circle" style="width:26px;height:26px">
+      <div class="flag-stripe" style="background:#42b5e5"></div>
+      <div class="flag-stripe" style="background:#fff"></div>
+      <div class="flag-stripe" style="background:#42b5e5"></div>
+      <div class="flag-sun" style="width:9px;height:9px"></div>
+    </div>
+    <span class="logo-text" style="font-size:0.95rem">MATIZ<span>UY</span></span>
+  </div>
+  <span>© 2026 Matías Zapata · Uruguay</span>
+</footer>
+
+<script>
+const slides=document.getElementById('slides');
+const dots=document.querySelectorAll('.dot');
+let cur=0,total=3;
+function goTo(i){cur=i;slides.style.transform='translateX(-'+i*100+'%)';dots.forEach((d,j)=>d.classList.toggle('active',j===i))}
+document.getElementById('prev').onclick=()=>goTo((cur-1+total)%total);
+document.getElementById('next').onclick=()=>goTo((cur+1)%total);
+dots.forEach(d=>d.addEventListener('click',()=>goTo(+d.dataset.i)));
+setInterval(()=>goTo((cur+1)%total),6000);
+document.getElementById('addSlide').onclick=()=>sendPrompt('Quiero agregar un nuevo slide al slider. Ayudame a personalizarlo.');
+
+document.querySelectorAll('.vtab').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.vtab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.vpanel').forEach(p=>p.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('p-'+this.dataset.tab).classList.add('active');
+  });
+});
+
+document.getElementById('fsubBtn').addEventListener('click',async function(){
+  const name=document.getElementById('fname').value.trim();
+  const email=document.getElementById('femail').value.trim();
+  const subject=document.getElementById('fsubject').value.trim();
+  const msg=document.getElementById('fmsg').value.trim();
+  const status=document.getElementById('fstatus');
+  if(!name||!email||!msg){status.className='form-status err';status.textContent='Por favor completá nombre, email y mensaje.';return}
+  this.textContent='Enviando...';this.disabled=true;
+  try{
+    const res=await fetch('https://formsubmit.co/ajax/m.zapatafleitas@gmail.com',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({name,email,subject:subject||'Contacto desde matizuy.com',message:msg,_replyto:email})
+    });
+    const data=await res.json();
+    if(data.success==='true'||data.success===true){
+      status.className='form-status ok';status.textContent='Mensaje enviado correctamente. Te respondo pronto.';
+      document.getElementById('fname').value='';document.getElementById('femail').value='';
+      document.getElementById('fsubject').value='';document.getElementById('fmsg').value='';
+    } else {
+      throw new Error();
+    }
+  } catch(e){
+    status.className='form-status err';status.textContent='Hubo un error. Escribime directo a m.zapatafleitas@gmail.com';
+  }
+  this.textContent='Enviar mensaje';this.disabled=false;
+});
+</script>
